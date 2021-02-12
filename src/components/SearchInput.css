@@ -1,0 +1,17 @@
+.search-input {
+    width: 50rem;
+    height: 6rem;
+    padding: 2rem 3rem 2rem 8rem;
+
+    background-image: url(../images/search-solid.svg);
+    background-repeat: no-repeat;
+    background-size: 2.2rem, 2.2rem;
+    background-position: center left 4rem;
+
+    border: none;
+    border-radius: .5rem;
+    box-shadow: .2rem .2rem 1rem rgba(150, 150, 150, 0.2);
+
+    font-family: inherit;
+    font-size: 1.4rem;
+}
