@@ -2,6 +2,7 @@
     width: 50rem;
     height: 6rem;
     padding: 2rem 3rem 2rem 8rem;
+    margin-right: 2rem;
 
     background-image: url(../images/search-solid.svg);
     background-repeat: no-repeat;
