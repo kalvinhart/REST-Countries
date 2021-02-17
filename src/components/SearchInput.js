@@ -12,7 +12,7 @@ class SearchInput extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.props.onSubmit}>
+            <form className="search-input__form" onSubmit={this.props.onSubmit}>
                 <input className="search-input" type="text" value={this.props.term} onChange={(e) => {this.setState({term: e.target.value})}} placeholder="Search for a country..."></input>
                 {this.props.searching ? <Button text="Clear Search" onClick={this.props.clearSearchClick} /> : ""}
             </form>

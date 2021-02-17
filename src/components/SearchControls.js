@@ -34,6 +34,7 @@ class SearchControls extends React.Component {
         const data = await response.json();
         this.setState({data: data});
         console.log(this.state.data);
+        this.props.updateData(this.state.data);
     }
 
     renderCountries(data, isFromSearch = false) {
@@ -47,10 +48,7 @@ class SearchControls extends React.Component {
             displayedResults = results.slice(0, 20);
         }
         
-        let html;
-        html = displayedResults.map((country, i) => {
-            return (<Card id={i} data={country} />);
-        });
+        let html = displayedResults.map((country, i) => <Card id={i} data={country} />);
         return html;
     }
 

@@ -23,7 +23,7 @@
 
 .select-box,
 .select-box__options {
-    box-shadow: .2rem .2rem 1rem rgba(150, 150, 150, 0.2);
+    box-shadow: .2rem .2rem 1rem rgba(150, 150, 150, 0.3);
 }
 
 .select-box.open .select-box__options {

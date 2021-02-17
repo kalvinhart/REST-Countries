@@ -10,7 +10,7 @@
 }
 
 .card {
-    min-width: 30rem;
+    min-width: 32rem;
     height: 42rem;
 
     display: grid;
@@ -18,7 +18,7 @@
 
     background-color: var(--white);
     border-radius: .5rem;
-    box-shadow: .2rem .2rem 1rem rgba(150, 150, 150, 0.2);
+    box-shadow: .2rem .2rem 1rem rgba(150, 150, 150, 0.3);
 
     overflow: hidden;
 }
@@ -42,4 +42,15 @@
 
 .card__details span {
     font-weight: 800;
+}
+
+.search-results a {
+    text-decoration: none;
+    color: var(--very-dark-blue-text);
+    transition: all .2s;
+}
+
+.search-results a:hover {
+    transform: scale(1.01);
+    box-shadow: .4rem .4rem 2rem rgba(150, 150, 150, 0.6);
 }
