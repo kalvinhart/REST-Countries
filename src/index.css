@@ -28,6 +28,9 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    padding-bottom: 6rem;
+    
     font-family: Nunito Sans, sans-serif;
     color: var(--very-dark-blue-text);
 
@@ -35,7 +38,42 @@ body {
 }
 
 .width {
-    width: 85%;
+    width: 90%;
     max-width: 144rem;
     margin: 0 auto;
+}
+
+.btn {
+    padding: 1rem 2rem;
+
+    display: inline-block;
+    
+    border: none;
+    border-radius: 5px;
+    background-color: var(--white);
+    box-shadow: 0 .2rem 1rem rgba(150, 150, 150, 0.3);
+
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--very-dark-blue-text);
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: box-shadow .15s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 .2rem 1rem rgba(150, 150, 150, 0.6);
+}
+
+@media only screen and (max-width: 540px) {
+    .btn {
+        font-size: 1.4rem;
+    }
+
+    .btn-clear {
+        margin-bottom: 2rem;
+    }
 }

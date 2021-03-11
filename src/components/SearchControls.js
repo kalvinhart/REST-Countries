@@ -14,81 +14,80 @@ class SearchControls extends React.Component {
         this.state = {
             term: "",
             selected: "Filter by Region",
-            data: [],
             searching: false,
-            searchResult: []
+            searchResult: [],
+            error: false,
+            errorContent: ""
         }
 
         this.renderCountries = this.renderCountries.bind(this);
         this.onSearchSubmit = this.onSearchSubmit.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
         this.onDropdownChange = this.onDropdownChange.bind(this);
-        this.getCountries();
-    }
-
-    async getCountries() {
-        if (this.state.data.length > 0) return;
-
-        const url = "https://restcountries.eu/rest/v2/all";
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setState({data: data});
-        console.log(this.state.data);
-        this.props.updateData(this.state.data);
     }
 
     renderCountries(data, isFromSearch = false) {
-        if (!this.state.data) return;
+        if (!this.props.data) return;
         let results, displayedResults;
         
         if (isFromSearch) {
             displayedResults = data;
         } else {
-            results = this.state.data;
+            results = this.props.data;
             displayedResults = results.slice(0, 20);
         }
         
-        let html = displayedResults.map((country, i) => <Card id={i} data={country} />);
-        return html;
+        let jsx = displayedResults.map(country => <Card key={country.name} data={country} formatNumbers={this.props.formatNumbers} />);
+        return jsx;
     }
 
     search(term) {
-        const results = this.state.data.filter(result => (result.name.toLowerCase().includes(term.toLowerCase())) || (result.region.toLowerCase() === term.toLowerCase()));
+        const results = this.props.data.filter(result => (result.name.toLowerCase().includes(term.toLowerCase())) || (result.region.toLowerCase() === term.toLowerCase()));
+        if (results.length === 0) {
+            this.setState({error: true, errorText: <h2 className="error-text">No results found.</h2>});
+        }
         this.setState({searching: true, searchResult: results});
     }
 
-    onSearchSubmit(e) {
-        e.preventDefault();
-        this.search(e.target[0].value);
+    onSearchSubmit(value) {
+        if (!value) return;
+
+        this.search(value);
     }
 
     onDropdownChange(e) {
-        this.search(e.target.textContent);
-        this.setState({selected: e.target.textContent});
+        this.setState({selected: e.target.textContent}, this.search(e.target.textContent));
     }
 
     clearSearch() {
         this.setState({
             searching: false,
-            selected: "Filter by Region"
+            searchResult: [],
+            selected: "Filter by Region",
+            error: false,
+            errorText: ""
         });
     }
 
     render() {
+        const {searching, selected, searchResult, error, errorText} = this.state;
+
         return (
             <React.Fragment>
                 <section className="search-controls width">
                     <SearchInput 
                         onSubmit={this.onSearchSubmit}
-                        searching={this.state.searching}
+                        searching={searching}
                         clearSearchClick={this.clearSearch}
                     />
-                    <SelectBox text={this.state.selected} onClick={this.onDropdownChange}/>
+                    <SelectBox text={selected} onClick={this.onDropdownChange}/>
                 </section>
                 <SearchResults 
                     showCountries={this.renderCountries}
-                    searching={this.state.searching}
-                    searchResult={this.state.searchResult}  
+                    searching={searching}
+                    searchResult={searchResult}  
+                    error={error}
+                    errorText={errorText}
                 />
             </React.Fragment>
         );

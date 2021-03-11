@@ -28,6 +28,7 @@
 
 .select-box.open .select-box__options {
     visibility: visible;
+    opacity: 1;
 }
 
 .select-box__trigger {
@@ -41,7 +42,7 @@
 
 .select-box__options {
     position: absolute;
-    top: 120%;
+    top: 110%;
     left: 0;
     width: 20rem;
 
@@ -50,16 +51,26 @@
 
     background-color: var(--white);
     visibility: hidden;
+    opacity: 0;
 
-    transition: all .2s;
+    transition: opacity .2s;
 }
 
 .select-box__options span{
     padding: 1rem;
 
     display: block;
+
+    transition: background-color .15s ease;
 }
 
 .select-box__options span:hover {
     background-color: #eee;
+}
+
+
+@media only screen and (max-width: 540px) {
+    .select-box {
+        height: 4rem;
+    }
 }
