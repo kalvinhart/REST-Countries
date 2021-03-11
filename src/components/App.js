@@ -36,19 +36,14 @@ class App extends React.Component {
         }
     }
 
-    formatNumbers(num) {
-        if (!num) return;
-        return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-    }
-
     render() {
         return (
             <React.Fragment>
                 <Header />
                 {this.state.loading ? <Spinner /> : 
                     <Switch>
-                        <Route exact path="/" render={() => <SearchControls data={this.state.data} getCountries={this.getCountries} formatNumbers={this.formatNumbers}/>} /> 
-                        <Route exact path="/country/:name" render={(routeProps) => <CountryDetails data={this.state.data} getCountries={this.getCountries} formatNumbers={this.formatNumbers} {...routeProps}/>} />
+                        <Route exact path="/" render={() => <SearchControls data={this.state.data} getCountries={this.getCountries}/>} /> 
+                        <Route exact path="/country/:name" render={(routeProps) => <CountryDetails data={this.state.data} getCountries={this.getCountries} {...routeProps}/>} />
                         <Route component={RouteError} />
                     </Switch>
                 }

@@ -8,7 +8,7 @@ I developed this desktop-first, but it is fully responsive for tablet and mobile
 
 I chose this project as I wanted to test my React knowledge so far, and make use of React Router which I had not used in a project before. I chose not to implement the color theme switcher as I wanted to focus more on the core functionality of the project using the API.
 
-I tested the application in Chrome, Firefox and Edge, as well as Chrome for Android.
+I tested the application in Chrome, Safari Firefox and Edge, as well as Chrome for Android and iOS Safari.
 
 ## What have I learnt?
 
@@ -17,6 +17,8 @@ I came accross several issues as I was developing this which I had to solve. It 
 On a couple of occaisions I was a little stuck but with the help of google, I was able to find solutions, or ideas that led to me finding a solution myself, to my problems. An example of this is where I was struggling to understand why a CSS grid area was not expanding it's height to fit the content despite declaring it to size to "max-content". After checking MDN, I realised that "max-content" will size a grid area to be the height of the largest element within itself, leading me to then realise that I had declared a specific height for one of the element and so the grid area was defaulting to this height. Upon removing the explicit height, the grid area finally behaved as intended.
 
 I used BEM notation in my CSS, but in hindsight I felt this was unnecessary, as each React component has its' own CSS file and React convention would suggest naming classes after each component instead. In future I would chose to adopt this approach in my React projects.
+
+When testing different browsers, I discovered that Safari and iOS Safari do not supoport lookbehinds in regular expressions, so I opted for a simpler solution for formatting population numbers.
 
 ## Future improvements?
 
