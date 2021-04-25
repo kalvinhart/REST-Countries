@@ -1,0 +1,34 @@
+.card {
+    width: auto;
+    min-height: 42rem;
+
+    display: grid;
+    grid-template-rows: 20rem 1fr;
+
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: .2rem .2rem 1rem rgba(150, 150, 150, 0.3);
+
+    overflow: hidden;
+}
+
+.card__content {
+    padding: 3rem;
+}
+
+.card__title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+}
+
+.card__details {
+    font-size: 1.6rem;
+}
+
+.card__details:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.card__details span {
+    font-weight: 800;
+}
